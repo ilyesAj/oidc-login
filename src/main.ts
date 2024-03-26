@@ -18,8 +18,8 @@ export async function run(): Promise<void> {
     // Construct the payload based on inputs
     const payload: any = {
       client_id: clientId,
-      username: username,
-      password: password
+      username,
+      password
     }
 
     if (clientSecret) {

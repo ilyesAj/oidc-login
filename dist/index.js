@@ -28256,8 +28256,8 @@ async function run() {
         // Construct the payload based on inputs
         const payload = {
             client_id: clientId,
-            username: username,
-            password: password
+            username,
+            password
         };
         if (clientSecret) {
             payload.client_secret = clientSecret;
