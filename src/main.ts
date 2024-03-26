@@ -36,7 +36,7 @@ export async function run(): Promise<void> {
     }
     // Make a request to the OIDC provider
     const response = await axios.post(url, payload)
-
+    console.log(response)
     // Extract relevant data from the response
     const { access_token, refresh_token, expires_in, refresh_expires_in } =
       response.data
