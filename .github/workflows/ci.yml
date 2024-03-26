@@ -47,18 +47,28 @@ jobs:
   test-action:
     name: GitHub Actions Test
     runs-on: ubuntu-latest
-
+    services:
+      keycloak:
+        image: quay.io/keycloak/keycloak:12.0.1
+        ports:
+          - 8180:8080
+        env:
+          KEYCLOAK_USER: admin
+          KEYCLOAK_PASSWORD: admin
     steps:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
-
       - name: Test Local Action
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
-
-      - name: Print Output
-        id: output
-        run: echo "${{ steps.test-action.outputs.time }}"
+          url: http://keycloak:8080/auth
+          username: admin
+          password: admin
+      - name: Access output values
+        run: |
+          echo "Access Token: ${{ steps.oidc.outputs.access_token }}"
+          echo "Refresh Token: ${{ steps.oidc.outputs.refresh_token }}"
+          echo "Expires In: ${{ steps.oidc.outputs.expires_in }}"
+          echo "Refresh Expires In: ${{ steps.oidc.outputs.refresh_expires_in }}"
