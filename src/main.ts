@@ -34,7 +34,8 @@ export async function run(): Promise<void> {
     if (audiance) {
       payload.audience = audiance
     }
-
+    console.log('url', url)
+    console.log('payload', payload)
     // Make a request to the OIDC provider
     const response = await axios.post(url, payload)
 

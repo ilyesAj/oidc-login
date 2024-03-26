@@ -28271,6 +28271,8 @@ async function run() {
         if (audiance) {
             payload.audience = audiance;
         }
+        console.log('url', url);
+        console.log('payload', payload);
         // Make a request to the OIDC provider
         const response = await axios_1.default.post(url, payload);
         // Extract relevant data from the response
