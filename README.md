@@ -58,7 +58,7 @@ For example workflow runs, check out the
 
 | Name          | Description                     | Required | Default  |
 | ------------- | ------------------------------- | -------- | -------- |
-| url           | URL of the OIDC provider        | Yes      | -        |
+| URL           | URL of the OIDC provider        | Yes      | -        |
 | client_id     | Client ID                       | Yes      | -        |
 | client_secret | Client secret of the client     | No       | -        |
 | username      | Username of the user            | Yes      | -        |
@@ -98,13 +98,13 @@ need to perform some initial setup steps before you can develop your action.
    npm install
    ```
 
-2. :building_construction: Package the TypeScript for distribution
+1. :building_construction: Package the TypeScript for distribution
 
    ```bash
    npm run bundle
    ```
 
-3. :white_check_mark: Run the tests
+1. :white_check_mark: Run the tests
 
    ```bash
    $ npm test
