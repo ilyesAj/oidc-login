@@ -19,36 +19,34 @@ export async function run(): Promise<void> {
     const payload: any = {
       client_id: clientId,
       username: username,
-      password: password,
-    };
+      password: password
+    }
 
     if (clientSecret) {
-      payload.client_secret = clientSecret;
+      payload.client_secret = clientSecret
     }
     if (scope) {
-      payload.scope = scope;
+      payload.scope = scope
     }
     if (grantType) {
-      payload.grant_type = grantType;
+      payload.grant_type = grantType
     }
     if (audiance) {
-      payload.audience = audiance;
+      payload.audience = audiance
     }
 
     // Make a request to the OIDC provider
-    const response = await axios.post(url, payload);
+    const response = await axios.post(url, payload)
 
     // Extract relevant data from the response
-    const { access_token, refresh_token, expires_in,refresh_expires_in } = response.data;
+    const { access_token, refresh_token, expires_in, refresh_expires_in } =
+      response.data
 
     // Set the outputs
-    core.setOutput('access_token', access_token);
-    core.setOutput('refresh_token', refresh_token);
-    core.setOutput('expires_in', expires_in);
-    core.setOutput('refresh_expires_in', refresh_expires_in);
-    
-
-
+    core.setOutput('access_token', access_token)
+    core.setOutput('refresh_token', refresh_token)
+    core.setOutput('expires_in', expires_in)
+    core.setOutput('refresh_expires_in', refresh_expires_in)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
