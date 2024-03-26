@@ -1,6 +1,6 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'oidc-login'
+description: 'generic action to login to oidc provider and get token'
+author: 'ilyes ajroud'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
@@ -9,15 +9,41 @@ branding:
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  url:
+    description: 'url of the oidc provider'
     required: true
-    default: '1000'
-
+  client_id:
+    description: 'client id'
+    required: true
+  client_secret:
+    description: 'client secret of the client'
+    required: false
+  username:
+    description: 'username of the user'
+    required: true
+  password:
+    description: 'password of the user'
+    required: true
+  scope:
+    description: 'scope of the token request'
+    required: false
+  grant_type:
+    description: 'grant type of the token request'
+    required: false
+    default: 'password'
+  audience:
+    description: 'audience of the token'
+    required: false
 # Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  access_token:
+    description: 'access token to use in the api calls'
+  refresh_token:
+    description: 'refresh token to get a new access token'
+  expires_in:
+    description: 'access token expiration time in seconds'
+  refresh_expires_in:
+    description: 'expiration time of the refresh token in seconds'
 
 runs:
   using: node20
